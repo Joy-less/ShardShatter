@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://lptixrq37ce"]
+
+[ext_resource type="Script" uid="uid://bv2ywolsb5xe3" path="res://addons/ShardShatter/ShardShatter.gd" id="1_glv2v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_glv2v"]
+
+[node name="Main" type="Node3D" unique_id=1081301427]
+
+[node name="Box" type="MeshInstance3D" parent="." unique_id=870174113]
+mesh = SubResource("BoxMesh_glv2v")
+script = ExtResource("1_glv2v")

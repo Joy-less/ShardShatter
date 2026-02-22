@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dlajo0u8hvhdb"]
+
+[ext_resource type="Shader" uid="uid://b8wep8m8o5y5" path="res://addons/ShardShatter/Fade.gdshader" id="1_onf45"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_onf45")
+shader_parameter/progress = 0.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_multiplier = 5.0000002375
