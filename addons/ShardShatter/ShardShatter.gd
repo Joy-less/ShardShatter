@@ -2,6 +2,8 @@
 class_name ShardShatter
 extends Node
 
+signal on_finished(target: Node3D)
+
 @export_group("Fade")
 @export var fade_duration: float = 1.0
 @export var fade_color: Color = Color.WHITE
@@ -48,7 +50,7 @@ func shatter_target(target: Node3D) -> void:
 		shatter_amount, shatter_velocity, shatter_damping,
 		shatter_scale)
 
-static func _shatter_core(
+func _shatter_core(
 	target: Node3D, fade_duration: float, fade_color: Color, fade_emission: Color,
 	fade_emission_multiplier: float, shatter_offset: Vector3, shatter_radius: float,
 	shatter_color: Color, shatter_emission: Color, shatter_emission_multiplier: float,
@@ -95,6 +97,8 @@ static func _shatter_core(
 	await shatter_particles_instance.finished
 	
 	shatter_particles_instance.queue_free()
+	
+	on_finished.emit(target)
 
 static func _get_geometry_instances(node: Node) -> Array[GeometryInstance3D]:
 	var geometry_instances: Array[GeometryInstance3D] = []
