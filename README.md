@@ -2,7 +2,7 @@
 
 Shatter meshes into shards in Godot 4.
 
-This addon creates an effect similar to Sword Art Online.
+This addon creates a polygon explosion effect similar to Sword Art Online.
 
 ## Preview
 
