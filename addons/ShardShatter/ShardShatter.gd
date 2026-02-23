@@ -10,6 +10,7 @@ signal on_finished(target: Node3D)
 @export var fade_emission: Color = Color.AQUA
 @export var fade_emission_multiplier: float = 2.0
 @export_group("Shatter")
+@export var shatter_lifetime: float = 3.0
 @export var shatter_offset_use_aabb: bool = true
 @export var shatter_offset: Vector3 = Vector3.ZERO
 @export var shatter_radius_use_aabb: bool = true
@@ -45,17 +46,17 @@ func shatter_target(target: Node3D) -> void:
 				* _get_average_component(target.scale) / 2
 	
 	_shatter_core(target, fade_duration, fade_color, fade_emission,
-		fade_emission_multiplier, shatter_offset_final, shatter_radius_final,
-		shatter_color, shatter_emission, shatter_emission_multiplier,
-		shatter_amount, shatter_velocity, shatter_damping,
-		shatter_scale)
+		fade_emission_multiplier, shatter_lifetime, shatter_offset_final,
+		shatter_radius_final, shatter_color, shatter_emission,
+		shatter_emission_multiplier, shatter_amount, shatter_velocity,
+		shatter_damping, shatter_scale)
 
 func _shatter_core(
 	target: Node3D, fade_duration: float, fade_color: Color, fade_emission: Color,
-	fade_emission_multiplier: float, shatter_offset: Vector3, shatter_radius: float,
-	shatter_color: Color, shatter_emission: Color, shatter_emission_multiplier: float,
-	shatter_amount: int, shatter_velocity: Vector2, shatter_damping: Vector2,
-	shatter_scale: Vector2
+	fade_emission_multiplier: float, shatter_lifetime: float, shatter_offset: Vector3,
+	shatter_radius: float, shatter_color: Color, shatter_emission: Color,
+	shatter_emission_multiplier: float, shatter_amount: int, shatter_velocity: Vector2,
+	shatter_damping: Vector2, shatter_scale: Vector2
 ) -> void:
 	var fade_material_instance: ShaderMaterial = fade_material.duplicate()
 	fade_material_instance.set_shader_parameter(&"color", fade_color)
@@ -79,6 +80,7 @@ func _shatter_core(
 	target.get_tree().root.add_child(shatter_particles_instance)
 	shatter_particles_instance.global_position = target.global_position + shatter_offset
 	shatter_particles_instance.amount = shatter_amount
+	shatter_particles_instance.lifetime = shatter_lifetime
 	var process_material: ParticleProcessMaterial = shatter_particles_instance.process_material
 	process_material.emission_sphere_radius = shatter_radius
 	process_material.initial_velocity_min = shatter_velocity.x
