@@ -107,7 +107,8 @@ static func _get_geometry_instances(node: Node) -> Array[GeometryInstance3D]:
 	if node is GeometryInstance3D:
 		geometry_instances.push_back(node)
 	for descendant: Node in node.find_children("*"):
-		geometry_instances.push_back(descendant)
+		if descendant is GeometryInstance3D:
+			geometry_instances.push_back(descendant)
 	return geometry_instances
 
 static func _get_average_component(vector: Vector3) -> float:
