@@ -106,7 +106,7 @@ static func _get_geometry_instances(node: Node) -> Array[GeometryInstance3D]:
 	var geometry_instances: Array[GeometryInstance3D] = []
 	if node is GeometryInstance3D:
 		geometry_instances.push_back(node)
-	for descendant: Node in node.find_children("*"):
+	for descendant: Node in node.find_children("*", "", true, false):
 		if descendant is GeometryInstance3D:
 			geometry_instances.push_back(descendant)
 	return geometry_instances
