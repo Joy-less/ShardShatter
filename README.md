@@ -9,7 +9,7 @@ This addon creates a polygon explosion effect similar to Sword Art Online.
 
 ## Preview
 
-<img src="ShatterPreview.webp" alt="Shatter Preview" width="1280">
+<img src="Assets/ShatterPreview.webp" alt="Shatter Preview" width="1280">
 
 ## Requirements
 
