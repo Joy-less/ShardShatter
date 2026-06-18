@@ -7,6 +7,16 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_gr0uu"]
 curve = SubResource("Curve_n4mst")
 
+[sub_resource type="Curve" id="Curve_5vs4a"]
+bake_resolution = 200
+_data = [Vector2(0, 1), 0.0, -0.8988763, 0, 1, Vector2(1, 0.10112369), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_s6idh"]
+curve_x = SubResource("Curve_5vs4a")
+curve_y = SubResource("Curve_5vs4a")
+curve_z = SubResource("Curve_5vs4a")
+
 [sub_resource type="Curve" id="Curve_hihh1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5964912, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -20,9 +30,16 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = 1.0728835e-05
 angle_max = 180.00002
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, 0, 0)
+rotation_3d_max = Vector3(360, 360, 360)
 spread = 180.0
 initial_velocity_min = 3.5
 initial_velocity_max = 3.5
+use_rotation_velocity_3d = true
+rotation_velocity_3d_min = Vector3(0, 0, 0)
+rotation_velocity_3d_max = Vector3(360, 360, 360)
+rotation_velocity_3d_curve = SubResource("CurveXYZTexture_s6idh")
 gravity = Vector3(0, 0, 0)
 damping_min = 1.0
 damping_max = 1.0
@@ -38,14 +55,11 @@ cull_mode = 2
 diffuse_mode = 3
 specular_mode = 1
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.9019608, 1, 1, 1)
 emission_enabled = true
 emission = Color(0, 1, 1, 1)
-emission_energy_multiplier = 5.0
-billboard_mode = 3
+emission_energy_multiplier = 3.0
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 stencil_flags = 2
 
 [sub_resource type="PrismMesh" id="PrismMesh_n4mst"]
@@ -59,5 +73,6 @@ amount = 1024
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_hihh1")
 draw_pass_1 = SubResource("PrismMesh_n4mst")

@@ -6,18 +6,18 @@ signal on_finished(target: Node3D)
 
 @export_group("Fade")
 @export var fade_duration: float = 1.0
-@export var fade_color: Color = Color.WHITE
-@export var fade_emission: Color = Color.AQUA
-@export var fade_emission_multiplier: float = 2.0
+@export var fade_color: Color = Color("e6ffff")
+@export var fade_emission: Color = Color("33ffff")
+@export var fade_emission_multiplier: float = 3.0
 @export_group("Shatter")
 @export var shatter_lifetime: float = 3.0
 @export var shatter_offset_use_aabb: bool = true
 @export var shatter_offset: Vector3 = Vector3.ZERO
 @export var shatter_radius_use_aabb: bool = true
 @export var shatter_radius: float = 0.0
-@export var shatter_color: Color = Color.WHITE
-@export var shatter_emission: Color = Color.AQUA
-@export var shatter_emission_multiplier: float = 2.0
+@export var shatter_color: Color = Color("e6ffff")
+@export var shatter_emission: Color = Color("33ffff")
+@export var shatter_emission_multiplier: float = 3.0
 @export var shatter_amount: int = 1024
 @export var shatter_velocity: Vector2 = Vector2(3.5, 3.5)
 @export var shatter_damping: Vector2 = Vector2(1.0, 1.0)

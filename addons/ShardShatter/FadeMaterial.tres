@@ -6,6 +6,6 @@
 render_priority = 0
 shader = ExtResource("1_onf45")
 shader_parameter/progress = 0.0
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/emission = Color(0, 1, 1, 1)
-shader_parameter/emission_multiplier = 5.0000002375
+shader_parameter/color = Color(0.9019608, 1, 1, 1)
+shader_parameter/emission = Color(0.2, 1, 1, 1)
+shader_parameter/emission_multiplier = 3.0000001425
