@@ -1,5 +1,8 @@
 # Shard Shatter
 
+[![Godot Asset Store](https://img.shields.io/github/v/release/Joy-less/ShardShatter.svg?label=Godot%20Asset%20Store&logo=godotengine)](https://store.godotengine.org/asset/joyless/shard-shatter)
+[![Godot Asset Library](https://img.shields.io/github/v/release/Joy-less/ShardShatter.svg?label=Godot%20Asset%20Library&logo=godotengine)](https://godotengine.org/asset-library/asset/4821)
+
 Shatter meshes into shards in Godot 4.
 
 This addon creates a polygon explosion effect similar to Sword Art Online.
