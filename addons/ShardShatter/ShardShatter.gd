@@ -22,6 +22,8 @@ signal on_finished(target: Node3D)
 @export var shatter_velocity: Vector2 = Vector2(3.5, 3.5)
 @export var shatter_damping: Vector2 = Vector2(1.0, 1.0)
 @export var shatter_scale: Vector2 = Vector2(0.8, 1.2)
+@export var shatter_billboard: bool = false
+@export var shatter_rotation_speed: Vector3 = Vector3(360.0, 360.0, 360.0)
 @export_group("Editor")
 @export var target_path: NodePath = ^"."
 @export_tool_button("Shatter") var shatter_button := shatter
@@ -49,14 +51,16 @@ func shatter_target(target: Node3D) -> void:
 		fade_emission_multiplier, shatter_lifetime, shatter_offset_final,
 		shatter_radius_final, shatter_color, shatter_emission,
 		shatter_emission_multiplier, shatter_amount, shatter_velocity,
-		shatter_damping, shatter_scale)
+		shatter_damping, shatter_scale, shatter_billboard,
+		shatter_rotation_speed)
 
 func _shatter_core(
 	target: Node3D, fade_duration: float, fade_color: Color, fade_emission: Color,
 	fade_emission_multiplier: float, shatter_lifetime: float, shatter_offset: Vector3,
 	shatter_radius: float, shatter_color: Color, shatter_emission: Color,
 	shatter_emission_multiplier: float, shatter_amount: int, shatter_velocity: Vector2,
-	shatter_damping: Vector2, shatter_scale: Vector2
+	shatter_damping: Vector2, shatter_scale: Vector2, shatter_billboard: bool,
+	shatter_rotation_speed: Vector3
 ) -> void:
 	var fade_material_instance: ShaderMaterial = fade_material.duplicate()
 	fade_material_instance.set_shader_parameter(&"color", fade_color)
@@ -89,11 +93,13 @@ func _shatter_core(
 	process_material.damping_max = shatter_damping.y
 	process_material.scale_min = shatter_scale.x
 	process_material.scale_max = shatter_scale.y
+	process_material.rotation_velocity_3d_max = shatter_rotation_speed
 	var pass_1: PrimitiveMesh = shatter_particles_instance.draw_pass_1
 	var pass_1_material: StandardMaterial3D = pass_1.material
 	pass_1_material.albedo_color = shatter_color
 	pass_1_material.emission = shatter_emission
 	pass_1_material.emission_energy_multiplier = shatter_emission_multiplier
+	pass_1_material.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES if shatter_billboard else BaseMaterial3D.BILLBOARD_DISABLED
 	
 	shatter_particles_instance.restart()
 	await shatter_particles_instance.finished
