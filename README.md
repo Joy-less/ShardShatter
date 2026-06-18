@@ -8,6 +8,12 @@ This addon creates a polygon explosion effect similar to Sword Art Online.
 
 <img src="Preview.webp" alt="Preview" width="1280">
 
+## Requirements
+
+ShardShatter v2 requires Godot 4.7+, because it uses the new [3D particle rotation](https://github.com/godotengine/godot/pull/112447) feature.
+
+ShardShatter v1 works for Godot 4.4+.
+
 ## Usage
 
 1. Add the addon to your game's `addons` folder.
